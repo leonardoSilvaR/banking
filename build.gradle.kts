@@ -1,3 +1,5 @@
+import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+
 plugins {
     kotlin("jvm") version "2.0.21" apply false
     kotlin("plugin.spring") version "2.0.21" apply false
@@ -6,7 +8,7 @@ plugins {
 }
 
 allprojects {
-    group = "com.leo.banking"
+    group = "com.banking"
     version = "0.1.0-SNAPSHOT"
 
     repositories {
@@ -18,6 +20,12 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "io.spring.dependency-management")
 
+    configure<DependencyManagementExtension> {
+        imports {
+            mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        }
+    }
+
     tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         compilerOptions {
             freeCompilerArgs.add("-Xjsr305=strict")
@@ -27,5 +35,9 @@ subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
+    }
+
+    dependencies {
+        "testRuntimeOnly"("org.junit.platform:junit-platform-launcher")
     }
 }

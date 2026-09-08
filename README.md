@@ -42,7 +42,7 @@ As duas coisas são complementares, não concorrentes.
 
 ```bash
 ./gradlew build
-docker compose -f load-tests/k6/docker-compose.observability.yml up -d
+docker compose -f config/docker-compose.yml up -d
 ./gradlew :app:bootRun
 ```
 
