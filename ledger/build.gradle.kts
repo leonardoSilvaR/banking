@@ -1,8 +1,8 @@
 dependencies {
     api(project(":shared-kernel"))
 
-//    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-//    implementation("org.postgresql:postgresql")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.postgresql:postgresql")
     implementation(kotlin("stdlib"))
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
